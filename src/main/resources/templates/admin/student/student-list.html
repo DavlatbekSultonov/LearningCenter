@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <a th:href="@{/admin/create/student}"   class="btn btn-success">Add New Student</a>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">FirstName</th>
+        <th scope="col">LastName</th>
+        <th scope="col">Email</th>
+        <th scope="col">Date of birth</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Stacks</th>
+        <th scope="col">Actions</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr th:each="student: ${students}">
+
+        <td th:text="${studentStat.count}" />
+       <!-- <td>
+            <img th:src="${student.photo}" alt="img" height="150px" width="300px">
+        </td>-->
+        <td th:text="${student.firstName}" />
+        <td th:text="${student.lastName}" />
+        <td th:text="${student.email}"/>
+        <td th:text="${student.birthDate}"/>
+        <!--<td th:text="${student.education}"/>-->
+        <td th:text="${student.phone}"/>
+
+        <td th:each="st : ${student.stack}" th:text="${st}"/>
+        <td th:text="${student.birthDate}"/>
+
+        <td>
+            <a th:href="@{/admin/update/student/{id}(id=${student.getId()})}"   class="btn btn-warning">Edit</a>
+            <a th:href="@{/admin/delete/student/{id}(id=${student.getId()})}" class="btn btn-danger">Delete</a>
+        </td>
+
+    </tr>
+
+    </tbody>
+</table>
+
+<a th:href="@{/static}" class="btn btn-success" style="position: fixed; bottom: 0; right: 0; margin: 20px">Back home</a>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMhttps://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cars.com%2Fresearch%2Fcompare%2F&psig=AOvVaw0Fi1bXcYHFNLexHN5UyIKM&ust=1698317435920000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCNiXsK-5kYIDFQAAAAAdAAAAABAEwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

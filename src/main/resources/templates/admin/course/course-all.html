@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>course</title>
+</head>
+<body>
+<h1 class="mt-5 mb-5 text-center">Course list</h1>
+<li>
+    <a class="dropdown-item" href="/admin/saveCourse" th:method="get">
+        <button class="btn btn-outline-danger">CreateCourse</button>
+    </a>
+</li>
+<table class="table table-dark table-hover table-bordered">
+    <tr class="text-center">
+        <th>ID</th>
+        <th>Name</th>
+        <th>CourseCode</th>
+        <th>Price</th>
+        <th>Mentor</th>
+        <th>MaxStudent</th>
+        <th>StartTime</th>
+        <th>Duration</th>
+        <th colspan="2">Actions</th>
+    </tr>
+    <tr th:each="course : ${courseList}">
+        <td th:text="${courseStat.count}">Id</td>
+        <td th:text="${course.name}">Name</td>
+        <td th:text="${course.courseCode}">CourseCode</td>
+        <td th:text="${course.price}">Price</td>
+        <td th:text="${course.mentor}">Mentor</td>
+        <td th:text="${course.maxStudent}">MaxStudent</td>
+        <td th:text="${course.startTime}">StartTime</td>
+        <td th:text="${course.duration}">Duration</td>>
+        <td><a class="btn btn-outline-danger" th:href="@{'/admin/deleteCourse/' + ${course.id}}">Delete</a></td>
+        <td><a class="btn btn-outline-danger" th:href="@{'/admin/updateCourse/' + ${course.id}}">Update</a></td>
+    </tr>
+</table>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+</html>

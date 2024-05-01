@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Student</title>
+</head>
+<body>
+<h2>Update Course</h2>
+<form th:action="@{'/admin/updateCourseId/' + ${courseUpdate.id}}" th:method="POST">
+  <input type="hidden" name="id" th:value="${courseUpdate.id}"/>
+  <br><br>
+  <label>
+    <input type="text" name="name" th:value="${courseUpdate.name}"/>
+  </label>
+  <br><br>
+  <label>
+    <input type="text" name="mentor" th:value="${courseUpdate.mentor}"/>
+  </label>
+  <br><br>
+  <label>
+    <input type="text" name="duration" th:value="${courseUpdate.duration}"/>
+  </label>
+  <br><br>
+  <label>
+    <input type="text" name="courseCode" th:value="${courseUpdate.courseCode}"/>
+  </label>
+  <br><br>
+  <label>
+    <input type="text" name="maxStudent" th:value="${courseUpdate.maxStudent}"/>
+  </label>
+  <br><br>
+  <label>
+    <input type="text" name="price" th:value="${courseUpdate.price}"/>
+  </label>
+  <br><br>
+  <label>
+    <input type="date" name="startTime" th:value="${courseUpdate.startTime}"/>
+  </label>
+  <br><br>
+  <button type="submit">Update</button>
+</form>
+</body>
+</html>
